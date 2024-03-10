@@ -1,0 +1,10 @@
+codecov:
+  token: 9a0e987d-c625-41cb-ad58-59cfdda07a11
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+    patch:
+      default:
+        informational: true

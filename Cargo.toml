@@ -1,0 +1,19 @@
+[workspace]
+members = [
+  "crates/*"
+]
+resolver = "2"
+
+[profile.release]
+lto = true
+
+[workspace.package]
+version = "0.19.3"
+authors = ["Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>"]
+edition = "2021"
+license = "MIT"
+documentation = "https://ast-grep.github.io/guide/introduction.html"
+homepage = "https://ast-grep.github.io/"
+repository = "https://github.com/ast-grep/ast-grep"
+rust-version = "1.63"
+readme = "README.md"
