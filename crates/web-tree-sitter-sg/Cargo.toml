@@ -1,0 +1,43 @@
+[package]
+edition = "2021"
+name = "web-tree-sitter-sg"
+version = "1.3.4"
+authors = ["<herringtondarkholme@users.noreply.github.com>"]
+license = "Apache-2.0 WITH LLVM-exception"
+readme = "README.md"
+repository = "https://github.com/ast-grep/web-tree-sitter-sg"
+description = """
+Raw bindings to the tree-sitter-web API.
+"""
+
+[badges]
+maintenance = { status = "experimental" }
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
+opt-level = "z"
+
+[features]
+default = ["node"]
+node = []
+web = ["web-sys"]
+
+[dependencies]
+js-sys = "0.3"
+wasm-bindgen = { version = "0.2.83", features = ["strict-macro"] }
+wasm-bindgen-futures = "0.4"
+
+[dependencies.web-sys]
+optional = true
+version = "0.3"
+features = [
+  "Window",
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3"
+
+[workspace]
+members = [".", "xtask"]
+default-members = ["."]
