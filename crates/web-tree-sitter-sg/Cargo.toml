@@ -37,7 +37,3 @@ features = [
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3"
-
-[workspace]
-members = [".", "xtask"]
-default-members = ["."]

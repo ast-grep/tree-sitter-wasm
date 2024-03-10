@@ -41,7 +41,3 @@ features = []
 [target.'cfg(target_arch = "wasm32")'.dev-dependencies]
 wasm-bindgen-futures = "0.4"
 wasm-bindgen-test = "0.3"
-
-[workspace]
-members = [".", "xtask"]
-default-members = ["."]
