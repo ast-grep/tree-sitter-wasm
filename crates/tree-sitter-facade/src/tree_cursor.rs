@@ -81,7 +81,7 @@ mod wasm {
 
     #[derive(Clone)]
     pub struct TreeCursor<'a> {
-        pub(crate) inner: web_tree_sitter::TreeCursor,
+        pub(crate) inner: web_tree_sitter_sg::TreeCursor,
         pub(crate) phantom: std::marker::PhantomData<&'a ()>,
     }
 
@@ -132,9 +132,9 @@ mod wasm {
         }
     }
 
-    impl<'a> From<web_tree_sitter::TreeCursor> for TreeCursor<'a> {
+    impl<'a> From<web_tree_sitter_sg::TreeCursor> for TreeCursor<'a> {
         #[inline]
-        fn from(inner: web_tree_sitter::TreeCursor) -> Self {
+        fn from(inner: web_tree_sitter_sg::TreeCursor) -> Self {
             let phantom = std::marker::PhantomData;
             Self { inner, phantom }
         }

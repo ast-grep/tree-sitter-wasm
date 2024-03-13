@@ -1,16 +1,16 @@
 {
-  "name": "web-tree-sitter-wasm-bindgen",
+  "name": "web-tree-sitter-wasm-bindgen-sg",
   "description": "Tree-sitter bindings for the web repackaged for compatibility with wasm-bindgen",
   "version": "0.20.8",
   "license": "Apache-2.0 WITH LLVM-exception",
   "author": {
-    "name": "silvanshade",
-    "email": "silvanshade@users.noreply.github.com",
+    "name": "Herrington Darkholme",
+    "email": "herringtondarkholme@users.noreply.github.com",
     "url": "https://github.com/silvanshade"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/silvanshade/web-tree-sitter-wasm-bindgen.git"
+    "url": "https://github.com/ast-grep/tree-sitter-wasm"
   },
   "main": "index.js",
   "scripts": {},

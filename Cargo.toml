@@ -8,7 +8,7 @@ resolver = "2"
 lto = true
 
 [workspace.package]
-version = "0.19.3"
+version = "0.20.8"
 authors = ["Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>"]
 edition = "2021"
 license = "MIT"
@@ -17,3 +17,7 @@ homepage = "https://ast-grep.github.io/"
 repository = "https://github.com/ast-grep/ast-grep"
 rust-version = "1.63"
 readme = "README.md"
+
+
+[workspace.dependencies]
+web-tree-sitter-sg = { path = "crates/web-tree-sitter-sg", version = "0.20.8" }

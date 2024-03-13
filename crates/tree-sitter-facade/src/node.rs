@@ -287,7 +287,7 @@ mod wasm {
     use crate::{input_edit::InputEdit, point::Point, range::Range, tree_cursor::TreeCursor};
     use std::{borrow::Cow, convert::TryFrom};
     use wasm_bindgen::{prelude::*, JsCast};
-    use web_tree_sitter::SyntaxNode;
+    use web_tree_sitter_sg::SyntaxNode;
 
     #[derive(Clone, Eq, Hash, PartialEq)]
     pub struct Node<'tree> {
@@ -527,7 +527,7 @@ mod wasm {
             let end_position = self.inner.end_position();
             let start_index = self.inner.start_index();
             let end_index = self.inner.end_index();
-            web_tree_sitter::Range::new(&start_position, &end_position, start_index, end_index).into()
+            web_tree_sitter_sg::Range::new(&start_position, &end_position, start_index, end_index).into()
         }
 
         // FIXME: this returns start character offset instead of byte offset

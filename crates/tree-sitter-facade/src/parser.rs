@@ -171,8 +171,8 @@ mod wasm {
     use wasm_bindgen::{prelude::*, JsCast};
 
     pub struct Parser {
-        inner: web_tree_sitter::Parser,
-        options: web_tree_sitter::ParseOptions,
+        inner: web_tree_sitter_sg::Parser,
+        options: web_tree_sitter_sg::ParseOptions,
     }
 
     unsafe impl Send for Parser {
@@ -181,7 +181,7 @@ mod wasm {
     impl Parser {
         #[inline]
         pub fn new() -> Result<Self, ParserError> {
-            let inner = web_tree_sitter::Parser::new()?;
+            let inner = web_tree_sitter_sg::Parser::new()?;
             let options = Default::default();
             Ok(Self { inner, options })
         }
@@ -263,7 +263,7 @@ mod wasm {
                 let result = unsafe { std::str::from_utf8_unchecked(result) };
                 Some(result.into())
             })
-                as Box<dyn FnMut(u32, Option<web_tree_sitter::Point>, Option<u32>) -> Option<JsString>>);
+                as Box<dyn FnMut(u32, Option<web_tree_sitter_sg::Point>, Option<u32>) -> Option<JsString>>);
             let input = closure.as_ref().unchecked_ref();
             let old_tree = old_tree.map(|tree| &tree.inner);
             let options = Some(&self.options);
@@ -290,7 +290,7 @@ mod wasm {
         pub fn set_included_ranges<'a>(&mut self, ranges: &'a [Range]) -> Result<(), IncludedRangesError> {
             // FIXME: check `ranges[i].end_byte <= ranges[i + 1].start_byte` or throw
             let ranges = ranges.iter().map(|range| &range.inner).collect::<js_sys::Array>();
-            let options = web_tree_sitter::ParseOptions::new(Some(&ranges));
+            let options = web_tree_sitter_sg::ParseOptions::new(Some(&ranges));
             self.options = options;
             Ok(())
         }
@@ -336,9 +336,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Parser> for Parser {
+    impl From<web_tree_sitter_sg::Parser> for Parser {
         #[inline]
-        fn from(inner: web_tree_sitter::Parser) -> Self {
+        fn from(inner: web_tree_sitter_sg::Parser) -> Self {
             let options = Default::default();
             Self { inner, options }
         }

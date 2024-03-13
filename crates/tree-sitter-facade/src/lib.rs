@@ -34,6 +34,6 @@ impl TreeSitter {
 
     #[cfg(target_arch = "wasm32")]
     pub async fn init() -> Result<(), JsError> {
-        web_tree_sitter::TreeSitter::init().await
+        web_tree_sitter_sg::TreeSitter::init().await
     }
 }

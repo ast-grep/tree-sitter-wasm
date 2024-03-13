@@ -95,7 +95,7 @@ mod wasm {
 
     #[derive(Clone, Eq, Hash, Ord, PartialEq, PartialOrd)]
     pub struct Range {
-        pub(crate) inner: web_tree_sitter::Range,
+        pub(crate) inner: web_tree_sitter_sg::Range,
     }
 
     impl Range {
@@ -103,7 +103,7 @@ mod wasm {
         pub fn new(start_byte: u32, end_byte: u32, start_point: &Point, end_point: &Point) -> Self {
             let start_point = &start_point.inner;
             let end_point = &end_point.inner;
-            web_tree_sitter::Range::new(start_point, end_point, start_byte, end_byte).into()
+            web_tree_sitter_sg::Range::new(start_point, end_point, start_byte, end_byte).into()
         }
 
         #[inline]
@@ -145,9 +145,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Range> for Range {
+    impl From<web_tree_sitter_sg::Range> for Range {
         #[inline]
-        fn from(inner: web_tree_sitter::Range) -> Self {
+        fn from(inner: web_tree_sitter_sg::Range) -> Self {
             Self { inner }
         }
     }

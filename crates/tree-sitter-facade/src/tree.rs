@@ -67,7 +67,7 @@ mod wasm {
     use wasm_bindgen::JsCast;
 
     pub struct Tree {
-        pub(crate) inner: web_tree_sitter::Tree,
+        pub(crate) inner: web_tree_sitter_sg::Tree,
     }
 
     impl Tree {
@@ -79,7 +79,7 @@ mod wasm {
                 let start_position = edit.start_position().inner;
                 let old_end_position = edit.old_end_position().inner;
                 let new_end_position = edit.new_end_position().inner;
-                web_tree_sitter::Edit::new(
+                web_tree_sitter_sg::Edit::new(
                     start_index,
                     old_end_index,
                     new_end_index,
@@ -97,7 +97,7 @@ mod wasm {
                 .get_changed_ranges(&other.inner)
                 .into_vec()
                 .into_iter()
-                .map(|value| value.unchecked_into::<web_tree_sitter::Range>().into())
+                .map(|value| value.unchecked_into::<web_tree_sitter_sg::Range>().into())
         }
 
         pub fn language(&self) -> Language {
@@ -131,9 +131,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Tree> for Tree {
+    impl From<web_tree_sitter_sg::Tree> for Tree {
         #[inline]
-        fn from(inner: web_tree_sitter::Tree) -> Self {
+        fn from(inner: web_tree_sitter_sg::Tree) -> Self {
             Self { inner }
         }
     }

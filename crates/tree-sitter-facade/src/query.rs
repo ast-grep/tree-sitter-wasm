@@ -51,7 +51,7 @@ mod wasm {
     use crate::{error::QueryError, language::Language};
 
     pub struct Query {
-        pub(crate) inner: web_tree_sitter::Query,
+        pub(crate) inner: web_tree_sitter_sg::Query,
     }
 
     impl Query {
@@ -75,9 +75,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Query> for Query {
+    impl From<web_tree_sitter_sg::Query> for Query {
         #[inline]
-        fn from(inner: web_tree_sitter::Query) -> Self {
+        fn from(inner: web_tree_sitter_sg::Query) -> Self {
             Self { inner }
         }
     }

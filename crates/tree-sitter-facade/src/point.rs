@@ -76,13 +76,13 @@ pub use native::*;
 mod wasm {
     #[derive(Clone, Eq, Hash, Ord, PartialEq, PartialOrd)]
     pub struct Point {
-        pub(crate) inner: web_tree_sitter::Point,
+        pub(crate) inner: web_tree_sitter_sg::Point,
     }
 
     impl Point {
         #[inline]
         pub fn new(row: u32, column: u32) -> Self {
-            web_tree_sitter::Point::new(row, column).into()
+            web_tree_sitter_sg::Point::new(row, column).into()
         }
 
         #[inline]
@@ -116,9 +116,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Point> for Point {
+    impl From<web_tree_sitter_sg::Point> for Point {
         #[inline]
-        fn from(inner: web_tree_sitter::Point) -> Self {
+        fn from(inner: web_tree_sitter_sg::Point) -> Self {
             Self { inner }
         }
     }

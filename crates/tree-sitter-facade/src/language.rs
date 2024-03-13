@@ -93,7 +93,7 @@ mod wasm {
 
     #[derive(Clone, PartialEq)]
     pub struct Language {
-        pub(crate) inner: web_tree_sitter::Language,
+        pub(crate) inner: web_tree_sitter_sg::Language,
     }
 
     impl Language {
@@ -151,9 +151,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Language> for Language {
+    impl From<web_tree_sitter_sg::Language> for Language {
         #[inline]
-        fn from(inner: web_tree_sitter::Language) -> Self {
+        fn from(inner: web_tree_sitter_sg::Language) -> Self {
             Self { inner }
         }
     }

@@ -166,7 +166,7 @@ mod wasm {
 
     #[derive(Eq, PartialEq)]
     pub struct LanguageError {
-        pub(crate) inner: web_tree_sitter::LanguageError,
+        pub(crate) inner: web_tree_sitter_sg::LanguageError,
     }
 
     unsafe impl Send for LanguageError {
@@ -190,16 +190,16 @@ mod wasm {
     impl std::error::Error for LanguageError {
     }
 
-    impl From<web_tree_sitter::LanguageError> for LanguageError {
+    impl From<web_tree_sitter_sg::LanguageError> for LanguageError {
         #[inline]
-        fn from(inner: web_tree_sitter::LanguageError) -> Self {
+        fn from(inner: web_tree_sitter_sg::LanguageError) -> Self {
             Self { inner }
         }
     }
 
     #[derive(Eq, PartialEq)]
     pub struct ParserError {
-        pub(crate) inner: web_tree_sitter::ParserError,
+        pub(crate) inner: web_tree_sitter_sg::ParserError,
     }
 
     unsafe impl Send for ParserError {
@@ -223,16 +223,16 @@ mod wasm {
     impl std::error::Error for ParserError {
     }
 
-    impl From<web_tree_sitter::ParserError> for ParserError {
+    impl From<web_tree_sitter_sg::ParserError> for ParserError {
         #[inline]
-        fn from(inner: web_tree_sitter::ParserError) -> Self {
+        fn from(inner: web_tree_sitter_sg::ParserError) -> Self {
             Self { inner }
         }
     }
 
     #[derive(Eq, PartialEq)]
     pub struct QueryError {
-        pub(crate) inner: web_tree_sitter::QueryError,
+        pub(crate) inner: web_tree_sitter_sg::QueryError,
     }
 
     unsafe impl Send for QueryError {
@@ -256,9 +256,9 @@ mod wasm {
     impl std::error::Error for QueryError {
     }
 
-    impl From<web_tree_sitter::QueryError> for QueryError {
+    impl From<web_tree_sitter_sg::QueryError> for QueryError {
         #[inline]
-        fn from(inner: web_tree_sitter::QueryError) -> Self {
+        fn from(inner: web_tree_sitter_sg::QueryError) -> Self {
             Self { inner }
         }
     }

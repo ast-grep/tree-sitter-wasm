@@ -111,7 +111,7 @@ mod wasm {
 
     #[derive(Clone, Eq, PartialEq)]
     pub struct InputEdit {
-        pub(crate) inner: web_tree_sitter::Edit,
+        pub(crate) inner: web_tree_sitter_sg::Edit,
     }
 
     impl InputEdit {
@@ -127,7 +127,7 @@ mod wasm {
             let start_position = &start_position.inner;
             let old_end_position = &old_end_position.inner;
             let new_end_position = &new_end_position.inner;
-            web_tree_sitter::Edit::new(
+            web_tree_sitter_sg::Edit::new(
                 start_byte,
                 old_end_byte,
                 new_end_byte,
@@ -197,9 +197,9 @@ mod wasm {
         }
     }
 
-    impl From<web_tree_sitter::Edit> for InputEdit {
+    impl From<web_tree_sitter_sg::Edit> for InputEdit {
         #[inline]
-        fn from(inner: web_tree_sitter::Edit) -> Self {
+        fn from(inner: web_tree_sitter_sg::Edit) -> Self {
             Self { inner }
         }
     }
