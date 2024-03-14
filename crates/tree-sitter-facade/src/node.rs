@@ -2,6 +2,7 @@
 mod native {
     use crate::{input_edit::InputEdit, language::Language, point::Point, range::Range, tree_cursor::TreeCursor};
     use std::{borrow::Cow, convert::TryFrom};
+    use std::num::NonZeroU16;
 
     #[derive(Clone, Eq, Hash, PartialEq)]
     pub struct Node<'tree> {
@@ -48,7 +49,7 @@ mod native {
         #[inline]
         pub fn children_by_field_id<'a>(
             &self,
-            field_id: u16,
+            field_id: NonZeroU16,
             cursor: &'a mut TreeCursor<'tree>,
         ) -> impl Iterator<Item = Node<'tree>> + 'a {
             self.inner
@@ -143,7 +144,7 @@ mod native {
 
         #[inline]
         pub fn language(&self) -> Language {
-            self.inner.language().into()
+            self.inner.language().clone().into()
         }
 
         #[inline]

@@ -17,7 +17,7 @@ mod native {
         }
 
         pub fn language(&self) -> Language {
-            self.inner.language().into()
+            self.inner.language().clone().into()
         }
 
         pub fn root_node(&self) -> Node<'_> {

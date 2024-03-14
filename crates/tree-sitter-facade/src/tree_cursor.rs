@@ -1,7 +1,7 @@
 #[cfg(not(target_arch = "wasm32"))]
 mod native {
     use crate::node::Node;
-    use std::{borrow::Cow, convert::TryFrom};
+    use std::{borrow::Cow, convert::TryFrom, num::NonZeroU16};
 
     #[derive(Clone)]
     pub struct TreeCursor<'a> {
@@ -10,7 +10,7 @@ mod native {
 
     impl<'a> TreeCursor<'a> {
         #[inline]
-        pub fn field_id(&self) -> Option<u16> {
+        pub fn field_id(&self) -> Option<NonZeroU16> {
             self.inner.field_id()
         }
 

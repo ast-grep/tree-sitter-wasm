@@ -1,6 +1,7 @@
 #[cfg(not(target_arch = "wasm32"))]
 mod native {
     use std::{borrow::Cow, convert::TryFrom};
+    use std::num::NonZeroU16;
 
     #[derive(Clone, Eq, PartialEq)]
     pub struct Language {
@@ -14,7 +15,7 @@ mod native {
         }
 
         #[inline]
-        pub fn field_id_for_name(&self, field_name: impl AsRef<[u8]>) -> Option<u16> {
+        pub fn field_id_for_name(&self, field_name: impl AsRef<[u8]>) -> Option<NonZeroU16> {
             let field_name = field_name.as_ref();
             self.inner.field_id_for_name(field_name)
         }
