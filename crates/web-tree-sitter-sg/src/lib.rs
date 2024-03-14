@@ -34,8 +34,9 @@ extern {
 }
 
 #[cfg(feature = "node")]
-#[wasm_bindgen(module = "web-tree-sitter-wasm-bindgen")]
+#[wasm_bindgen(module = "web-tree-sitter-sg")]
 extern {
+    #[wasm_bindgen(js_name = "init")]
     fn initialize_tree_sitter() -> Promise;
 }
 
@@ -47,7 +48,6 @@ thread_local! {
 pub struct TreeSitter;
 
 impl TreeSitter {
-    #[cfg(feature = "node")]
     pub async fn init() -> Result<(), JsError> {
         #![allow(non_snake_case)]
 
@@ -57,51 +57,6 @@ impl TreeSitter {
         }
 
         JsFuture::from(initialize_tree_sitter()).await.lift_error()?;
-
-        // Set `web-tree-sitter` to initialized
-        TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
-
-        Ok(())
-    }
-
-    #[cfg(feature = "web")]
-    pub async fn init() -> Result<(), JsError> {
-        #![allow(non_snake_case)]
-
-        // Exit early if `web-tree-sitter` is already initialized
-        if TREE_SITTER_INITIALIZED.with(|cell| *cell.borrow()) {
-            return Ok(());
-        }
-
-        let scope = &web_sys::window().unwrap_throw();
-
-        let tree_sitter = Reflect::get(&scope, &"TreeSitter".into()).and_then(|property| {
-            if property.is_undefined() {
-                let message = "window.TreeSitter is not defined; load the tree-sitter javascript module first";
-                Err(JsError::new(message).into())
-            } else {
-                Ok(property)
-            }
-        })?;
-
-        // Call `init` from `web-tree-sitter` to initialize emscripten
-        let init = Reflect::get(&tree_sitter, &"init".into())
-            .lift_error()?
-            .unchecked_into::<Function>();
-        JsFuture::from(
-            init.call0(&JsValue::UNDEFINED)
-                .lift_error()?
-                .unchecked_into::<Promise>(),
-        )
-        .await
-        .lift_error()?;
-
-        let Language = Reflect::get(&tree_sitter, &"Language".into()).lift_error()?;
-        let Parser = tree_sitter;
-
-        // Manually define `Parser` and `Language` in a fashion that works with wasm-bindgen
-        Reflect::set(scope, &"Parser".into(), &Parser).lift_error()?;
-        Reflect::set(scope, &"Language".into(), &Language).lift_error()?;
 
         // Set `web-tree-sitter` to initialized
         TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
@@ -206,7 +161,7 @@ extern {
     fn delete(this: &LoggerParams, val: &JsString);
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "web-tree-sitter-sg")]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Language;
@@ -890,7 +845,7 @@ extern {
     pub fn reset(this: &TreeCursor, node: &SyntaxNode);
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(module="web-tree-sitter-sg")]
 extern {
     #[derive(Clone, Debug)]
     pub type Parser;
