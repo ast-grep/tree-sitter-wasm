@@ -6,13 +6,31 @@ settings:
 
 dependencies:
   web-tree-sitter-sg:
-    specifier: 0.20.8
+    specifier: 0.20.9
+    version: 0.20.9
+
+devDependencies:
+  tree-sitter-cli:
+    specifier: ^0.20.0
     version: 0.20.8
+  tree-sitter-javascript:
+    specifier: https://github.com/tree-sitter/tree-sitter-javascript#rust-0.20.0
+    version: github.com/tree-sitter/tree-sitter-javascript/2dd6a0f9069d3fd65290908ff8625becb2e35702
 
 packages:
 
-  /web-tree-sitter-sg@0.20.8:
-    resolution: {integrity: sha512-y8u9oI5CR/bz0m7AeN6WZU/VsnoG4aWysSR3Es/72MgC8Tf1TxegWTbZJaqfPXsz6UdAH0OHpAL0CdU7DfEczg==}
+  /nan@2.19.0:
+    resolution: {integrity: sha512-nO1xXxfh/RWNxfd/XPfbIfFk5vgLsAxUR9y5O0cHMJu/AW9U95JLXqthYHjEp+8gQ5p96K9jUp8nbVOxCdRbtw==}
+    dev: true
+
+  /tree-sitter-cli@0.20.8:
+    resolution: {integrity: sha512-XjTcS3wdTy/2cc/ptMLc/WRyOLECRYcMTrSWyhZnj1oGSOWbHLTklgsgRICU3cPfb0vy+oZCC33M43u6R1HSCA==}
+    hasBin: true
+    requiresBuild: true
+    dev: true
+
+  /web-tree-sitter-sg@0.20.9:
+    resolution: {integrity: sha512-LfgddZGPTkv5eWfjiAPEs3FyDv7bpMmDkRsS9ZkLfckiRklrSfpX8zFISErYiX4mfR+ftBxby+8A7YCPYDTsjw==}
     dependencies:
       web-tree-sitter: 0.20.8
     dev: false
@@ -20,3 +38,12 @@ packages:
   /web-tree-sitter@0.20.8:
     resolution: {integrity: sha512-weOVgZ3aAARgdnb220GqYuh7+rZU0Ka9k9yfKtGAzEYMa6GgiCzW9JjQRJyCJakvibQW+dfjJdihjInKuuCAUQ==}
     dev: false
+
+  github.com/tree-sitter/tree-sitter-javascript/2dd6a0f9069d3fd65290908ff8625becb2e35702:
+    resolution: {tarball: https://codeload.github.com/tree-sitter/tree-sitter-javascript/tar.gz/2dd6a0f9069d3fd65290908ff8625becb2e35702}
+    name: tree-sitter-javascript
+    version: 0.20.0
+    requiresBuild: true
+    dependencies:
+      nan: 2.19.0
+    dev: true

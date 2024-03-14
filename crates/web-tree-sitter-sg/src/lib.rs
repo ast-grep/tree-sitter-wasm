@@ -161,7 +161,7 @@ extern {
     fn delete(this: &LoggerParams, val: &JsString);
 }
 
-#[wasm_bindgen(module = "web-tree-sitter-sg")]
+#[wasm_bindgen]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Language;

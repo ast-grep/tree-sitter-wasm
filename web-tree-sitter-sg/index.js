@@ -7,6 +7,8 @@
 const TreeSitter = require("web-tree-sitter");
 module.exports = {
   Parser: TreeSitter,
-  Language: TreeSitter.Language,
-  init: TreeSitter.init,
+  init: async function initialize_tree_sitter() {
+    await TreeSitter.init();
+    globalThis.Language = TreeSitter.Language;
+  },
 };

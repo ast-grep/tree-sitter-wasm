@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "web-tree-sitter-sg": "0.20.8"
+    "web-tree-sitter-sg": "0.20.9"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.20.0",
