@@ -1,0 +1,8 @@
+{
+  "name": "only-for-wasm-pack-test",
+  "description": "this is only for wasm-pack test, not actually used",
+  "scripts": {},
+  "dependencies": {
+    "web-tree-sitter-sg": "0.20.8"
+  }
+}
