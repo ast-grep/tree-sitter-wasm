@@ -167,3 +167,25 @@ async fn goto_next_sibling() {
     }
     assert!(inner().await.is_ok());
 }
+
+#[wasm_bindgen_test]
+async fn goto_previous_sibling() {
+    async fn inner() -> Result<(), JsValue> {
+        TreeSitter::init().await?;
+        let cursor = crate::util::tree::cursor().await?.unwrap();
+        cursor.goto_previous_sibling();
+        Ok(())
+    }
+    assert!(inner().await.is_ok());
+}
+
+#[wasm_bindgen_test]
+async fn goto_first_child_for_index() {
+    async fn inner() -> Result<(), JsValue> {
+        TreeSitter::init().await?;
+        let cursor = crate::util::tree::cursor().await?.unwrap();
+        cursor.goto_first_child_for_index(0);
+        Ok(())
+    }
+    assert!(inner().await.is_ok());
+}

@@ -38,6 +38,11 @@ mod native {
         }
 
         #[inline]
+        pub fn goto_previous_sibling(&mut self) -> bool {
+            self.inner.goto_previous_sibling()
+        }
+
+        #[inline]
         pub fn goto_parent(&mut self) -> bool {
             self.inner.goto_parent()
         }
@@ -103,9 +108,21 @@ mod wasm {
             self.inner.goto_first_child()
         }
 
+        // FIXME: the func receives character index instead of byte offset
+        // it is in sync with node's start_byte method
+        #[inline]
+        pub fn goto_first_child_for_byte(&mut self, index: u32) -> Option<u32> {
+            self.inner.goto_first_child_for_index(index)
+        }
+
         #[inline]
         pub fn goto_next_sibling(&mut self) -> bool {
             self.inner.goto_next_sibling()
+        }
+
+        #[inline]
+        pub fn goto_previous_sibling(&mut self) -> bool {
+            self.inner.goto_previous_sibling()
         }
 
         #[inline]

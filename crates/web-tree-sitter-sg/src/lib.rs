@@ -838,6 +838,12 @@ extern {
     #[wasm_bindgen(method, js_name = gotoNextSibling)]
     pub fn goto_next_sibling(this: &TreeCursor) -> bool;
 
+    #[wasm_bindgen(method, js_name = gotoPreviousSibling)]
+    pub fn goto_previous_sibling(this: &TreeCursor) -> bool;
+
+    #[wasm_bindgen(method, js_name = gotoFirstChildForIndex)]
+    pub fn goto_first_child_for_index(this: &TreeCursor, index: u32) -> bool;
+
     #[wasm_bindgen(method, js_name = gotoParent)]
     pub fn goto_parent(this: &TreeCursor) -> bool;
 
