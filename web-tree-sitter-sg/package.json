@@ -1,7 +1,7 @@
 {
   "name": "web-tree-sitter-sg",
   "description": "Tree-sitter bindings for the web repackaged for compatibility with wasm-bindgen",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "license": "Apache-2.0 WITH LLVM-exception",
   "author": {
     "name": "Herrington Darkholme",
@@ -15,6 +15,6 @@
   "main": "index.js",
   "scripts": {},
   "dependencies": {
-    "web-tree-sitter": "0.21.0"
+    "web-tree-sitter": "0.22.6"
   }
 }
