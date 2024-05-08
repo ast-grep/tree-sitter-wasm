@@ -112,7 +112,11 @@ mod wasm {
         // it is in sync with node's start_byte method
         #[inline]
         pub fn goto_first_child_for_byte(&mut self, index: u32) -> Option<u32> {
-            self.inner.goto_first_child_for_index(index)
+            if self.inner.goto_first_child_for_index(index) {
+                Some(index)
+            } else {
+                None
+            }
         }
 
         #[inline]
