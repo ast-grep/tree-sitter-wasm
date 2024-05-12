@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "web-tree-sitter-sg": "0.21.1"
+    "web-tree-sitter-sg": "0.21.4"
   },
   "devDependencies": {
     "tree-sitter-javascript": "https://github.com/tree-sitter/tree-sitter-javascript#rust-0.20.0"
