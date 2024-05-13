@@ -652,6 +652,19 @@ extern {
     #[wasm_bindgen(method, getter, js_name = typeId)]
     pub fn type_id(this: &SyntaxNode) -> u16;
 
+    // reference: https://github.com/tree-sitter/tree-sitter/pull/3103/files
+    #[wasm_bindgen(method, getter, js_name = isNamed)]
+    pub fn is_named(this: &SyntaxNode) -> bool;
+
+    #[wasm_bindgen(method, getter, js_name = isMissing)]
+    pub fn is_missing(this: &SyntaxNode) -> bool;
+
+    #[wasm_bindgen(method, getter, js_name = hasChanges)]
+    pub fn has_changes(this: &SyntaxNode) -> bool;
+
+    #[wasm_bindgen(method, getter, js_name = hasError)]
+    pub fn has_error(this: &SyntaxNode) -> bool;
+
     // Instance Methods
 
     #[wasm_bindgen(method)]
@@ -698,18 +711,6 @@ extern {
 
     #[wasm_bindgen(method)]
     pub fn equals(this: &SyntaxNode, other: &SyntaxNode) -> bool;
-
-    #[wasm_bindgen(method, js_name = hasChanges)]
-    pub fn has_changes(this: &SyntaxNode) -> bool;
-
-    #[wasm_bindgen(method, js_name = hasError)]
-    pub fn has_error(this: &SyntaxNode) -> bool;
-
-    #[wasm_bindgen(method, js_name = isMissing)]
-    pub fn is_missing(this: &SyntaxNode) -> bool;
-
-    #[wasm_bindgen(method, js_name = isNamed)]
-    pub fn is_named(this: &SyntaxNode) -> bool;
 
     #[wasm_bindgen(method, js_name = namedChild)]
     pub fn named_child(this: &SyntaxNode, index: u32) -> Option<SyntaxNode>;
