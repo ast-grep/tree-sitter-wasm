@@ -1,23 +1,29 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  web-tree-sitter-sg:
-    specifier: file:./web-tree-sitter-sg/
-    version: file:web-tree-sitter-sg
+importers:
+
+  .:
+    dependencies:
+      web-tree-sitter-sg:
+        specifier: file:./web-tree-sitter-sg/
+        version: file:web-tree-sitter-sg
 
 packages:
 
-  /web-tree-sitter@0.21.0:
-    resolution: {integrity: sha512-iJ+QJ6ikN9D9cG7Kh6q3KtAstYFUQbYZ8OjuPEJYWfj2kLrmp5I3C2n6WjE1Y3jvj7nJbkcrJytJGWUEhCxn+g==}
-    dev: false
-
-  file:web-tree-sitter-sg:
+  web-tree-sitter-sg@file:web-tree-sitter-sg:
     resolution: {directory: web-tree-sitter-sg, type: directory}
-    name: web-tree-sitter-sg
+
+  web-tree-sitter@0.22.6:
+    resolution: {integrity: sha512-hS87TH71Zd6mGAmYCvlgxeGDjqd9GTeqXNqTT+u0Gs51uIozNIaaq/kUAbV/Zf56jb2ZOyG8BxZs2GG9wbLi6Q==}
+
+snapshots:
+
+  web-tree-sitter-sg@file:web-tree-sitter-sg:
     dependencies:
-      web-tree-sitter: 0.21.0
-    dev: false
+      web-tree-sitter: 0.22.6
+
+  web-tree-sitter@0.22.6: {}
