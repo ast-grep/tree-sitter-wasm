@@ -28,7 +28,7 @@ async fn version() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(13, language.version());
+        assert_eq!(14, language.version());
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -39,7 +39,7 @@ async fn field_count() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(34, language.field_count());
+        assert_eq!(38, language.field_count());
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -50,7 +50,7 @@ async fn node_kind_count() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(246, language.node_kind_count());
+        assert_eq!(271, language.node_kind_count());
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -61,7 +61,7 @@ async fn field_name_for_id() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(Some(12), language.field_id_for_name("decorator"));
+        assert_eq!(Some(13), language.field_id_for_name("decorator"));
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -72,7 +72,7 @@ async fn field_id_for_name() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(Some("decorator".into()), language.field_name_for_id(12));
+        assert_eq!(Some("decorator".into()), language.field_name_for_id(13));
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -85,7 +85,7 @@ async fn id_for_node_kind() {
         let language = crate::util::language::load().await?;
         let kind = "export_statement";
         let named = true;
-        assert_eq!(125, language.id_for_node_kind(kind, named));
+        assert_eq!(137, language.id_for_node_kind(kind, named));
         Ok(())
     }
     assert!(inner().await.is_ok());
@@ -96,7 +96,7 @@ async fn node_kind_for_id() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        let kind_id = 125;
+        let kind_id = 137;
         assert_eq!(Some("export_statement".into()), language.node_kind_for_id(kind_id));
         Ok(())
     }
@@ -123,11 +123,11 @@ async fn node_kind_is_visible() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        let kind_id = 223;
+        let kind_id = 267;
         assert_eq!(true, language.node_kind_is_visible(kind_id));
-        let kind_id = 224;
+        let kind_id = 271;
         assert_eq!(false, language.node_kind_is_visible(kind_id));
-        let kind_id = 225;
+        let kind_id = 272;
         assert_eq!(false, language.node_kind_is_visible(kind_id));
         Ok(())
     }
