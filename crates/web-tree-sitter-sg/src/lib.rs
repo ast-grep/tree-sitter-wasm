@@ -665,6 +665,9 @@ extern {
     #[wasm_bindgen(method, getter, js_name = hasError)]
     pub fn has_error(this: &SyntaxNode) -> bool;
 
+    #[wasm_bindgen(method, getter, js_name = isError)]
+    pub fn is_error(this: &SyntaxNode) -> bool;
+
     // Instance Methods
 
     #[wasm_bindgen(method)]

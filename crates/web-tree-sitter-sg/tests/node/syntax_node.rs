@@ -267,6 +267,17 @@ async fn has_error() {
 }
 
 #[wasm_bindgen_test]
+async fn is_error() {
+    async fn inner() -> Result<(), JsValue> {
+        TreeSitter::init().await?;
+        let node = crate::util::syntax_node::make().await?.unwrap();
+        let _ = node.is_error();
+        Ok(())
+    }
+    assert!(inner().await.is_ok());
+}
+
+#[wasm_bindgen_test]
 async fn equals() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;

@@ -434,7 +434,7 @@ mod wasm {
 
         #[inline]
         pub fn is_error(&self) -> bool {
-            self.kind_id() == u16::MAX
+            self.inner.is_error()
         }
 
         #[inline]
