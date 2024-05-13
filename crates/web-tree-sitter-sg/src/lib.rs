@@ -819,16 +819,16 @@ extern {
     #[wasm_bindgen(method, getter, js_name = startPosition)]
     pub fn start_position(this: &TreeCursor) -> Point;
 
-    // Instance Methods
-
-    #[wasm_bindgen(method, js_name = currentFieldId)]
+    #[wasm_bindgen(method, getter, js_name = currentFieldId)]
     pub fn current_field_id(this: &TreeCursor) -> Option<u16>;
 
-    #[wasm_bindgen(method, js_name = currentFieldName)]
+    #[wasm_bindgen(method, getter, js_name = currentFieldName)]
     pub fn current_field_name(this: &TreeCursor) -> Option<JsString>;
 
-    #[wasm_bindgen(method, js_name = currentNode)]
+    #[wasm_bindgen(method, getter, js_name = currentNode)]
     pub fn current_node(this: &TreeCursor) -> SyntaxNode;
+
+    // Instance Methods
 
     #[wasm_bindgen(method)]
     pub fn delete(this: &TreeCursor);
