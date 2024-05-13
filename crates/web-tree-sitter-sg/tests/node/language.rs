@@ -6,7 +6,7 @@ use web_tree_sitter_sg::*;
 async fn load_bytes() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
-        let bytes: &[u8] = include_bytes!("../../node_modules/tree-sitter-javascript/tree-sitter-javascript.wasm");
+        let bytes: &[u8] = include_bytes!("../tree-sitter-javascript.wasm");
         web_tree_sitter_sg::Language::load_bytes(&bytes.into()).await?;
         Ok(())
     }
