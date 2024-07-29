@@ -21,6 +21,11 @@ pub use query::*;
 pub use range::*;
 pub use tree::*;
 pub use tree_cursor::*;
+#[cfg(not(target_arch = "wasm32"))]
+pub use tree_sitter::{
+    WasmErrorKind, WasmError, WasmStore, wasmtime,
+    wasm_engine_t, wasm_stdlib_symbols,
+};
 
 use wasm_bindgen::prelude::*;
 

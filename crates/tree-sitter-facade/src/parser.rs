@@ -24,6 +24,11 @@ mod native {
             Ok(Self { inner })
         }
 
+        #[inline]
+        pub fn set_wasm_store(&mut self, store: tree_sitter::WasmStore) -> Result<(), LanguageError> {
+            self.inner.set_wasm_store(store).map_err(Into::into)
+        }
+
         #[allow(clippy::missing_safety_doc)]
         #[inline]
         pub unsafe fn cancellation_flag(&self) -> Option<&AtomicUsize> {

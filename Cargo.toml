@@ -21,4 +21,4 @@ readme = "README.md"
 
 [workspace.dependencies]
 web-tree-sitter-sg = { path = "crates/web-tree-sitter-sg", version = "0.22.0" }
-tree-sitter = "0.22.6"
+tree-sitter = { version = "0.22.6", features = ["wasm"] }
