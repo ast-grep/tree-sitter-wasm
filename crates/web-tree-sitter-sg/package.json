@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "web-tree-sitter-sg": "0.21.5"
+    "web-tree-sitter-sg": "0.22.0"
   }
 }

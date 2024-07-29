@@ -8,7 +8,7 @@ resolver = "2"
 lto = true
 
 [workspace.package]
-version = "0.21.5"
+version = "0.22.0"
 authors = ["Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>"]
 edition = "2021"
 license = "MIT"
@@ -20,5 +20,5 @@ readme = "README.md"
 
 
 [workspace.dependencies]
-web-tree-sitter-sg = { path = "crates/web-tree-sitter-sg", version = "0.21.0" }
-tree-sitter = "0.21.0"
+web-tree-sitter-sg = { path = "crates/web-tree-sitter-sg", version = "0.22.0" }
+tree-sitter = "0.22.6"
