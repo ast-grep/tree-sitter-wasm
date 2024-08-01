@@ -24,10 +24,14 @@ mod native {
             Ok(Self { inner })
         }
 
-        #[inline]
-        pub fn set_wasm_store(&mut self, store: tree_sitter::WasmStore) -> Result<(), LanguageError> {
-            self.inner.set_wasm_store(store).map_err(Into::into)
-        }
+        // #[inline]
+        // pub fn set_wasm_store(&mut self, store: tree_sitter::WasmStore) -> Result<(), LanguageError> {
+        //     self.inner.set_wasm_store(store).map_err(Into::into)
+        // }
+        // #[inline]
+        // pub fn take_wasm_store(&mut self) -> Option<tree_sitter::WasmStore> {
+        //     self.inner.take_wasm_store()
+        // }
 
         #[allow(clippy::missing_safety_doc)]
         #[inline]
