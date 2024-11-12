@@ -41,7 +41,7 @@ mod native {
 
         #[inline]
         pub fn language(&self) -> Option<Language> {
-            self.inner.language().map(Into::into)
+            self.inner.language().map(|l| (*l).clone()).map(Into::into)
         }
 
         #[inline]

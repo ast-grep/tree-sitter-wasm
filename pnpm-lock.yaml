@@ -17,13 +17,13 @@ packages:
   web-tree-sitter-sg@file:web-tree-sitter-sg:
     resolution: {directory: web-tree-sitter-sg, type: directory}
 
-  web-tree-sitter@0.22.6:
-    resolution: {integrity: sha512-hS87TH71Zd6mGAmYCvlgxeGDjqd9GTeqXNqTT+u0Gs51uIozNIaaq/kUAbV/Zf56jb2ZOyG8BxZs2GG9wbLi6Q==}
+  web-tree-sitter@0.24.4:
+    resolution: {integrity: sha512-sETP1Sf9OTd4LusrKBNznNgTt3fWoWhJnAFaKPiGSeVKXJbZ72qoMpxddKMdVI5BgXv32OI7tkKQre5PmF9reA==}
 
 snapshots:
 
   web-tree-sitter-sg@file:web-tree-sitter-sg:
     dependencies:
-      web-tree-sitter: 0.22.6
+      web-tree-sitter: 0.24.4
 
-  web-tree-sitter@0.22.6: {}
+  web-tree-sitter@0.24.4: {}
