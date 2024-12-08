@@ -68,6 +68,14 @@ mod native {
         }
     }
 
+    impl From<tree_sitter_language::LanguageFn> for Language {
+        #[inline]
+        fn from(inner: tree_sitter_language::LanguageFn) -> Self {
+            let inner = tree_sitter::Language::from(inner);
+            Self { inner }
+        }
+    }
+
     impl std::panic::RefUnwindSafe for Language {
     }
 
