@@ -679,6 +679,9 @@ extern {
     #[wasm_bindgen(method, js_name = childForFieldName)]
     pub fn child_for_field_name(this: &SyntaxNode, field_name: &str) -> Option<SyntaxNode>;
 
+    #[wasm_bindgen(method, js_name = childWithDescendant)]
+    pub fn child_with_descendant(this: &SyntaxNode, descendant: &SyntaxNode) -> Option<SyntaxNode>;
+
     #[wasm_bindgen(method, js_name = descendantForIndex)]
     pub fn descendant_for_index(this: &SyntaxNode, index: u32) -> Option<SyntaxNode>;
 

@@ -370,6 +370,18 @@ async fn child_for_field_name() {
 }
 
 #[wasm_bindgen_test]
+async fn child_with_descendant() {
+    async fn inner() -> Result<(), JsValue> {
+        TreeSitter::init().await?;
+        let node = crate::util::syntax_node::make().await?.unwrap();
+        let descendant = crate::util::syntax_node::make().await?.unwrap();
+        let _ = node.child_with_descendant(&descendant);
+        Ok(())
+    }
+    assert!(inner().await.is_ok());
+}
+
+#[wasm_bindgen_test]
 async fn descendant_for_index() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
