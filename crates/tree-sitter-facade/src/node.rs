@@ -33,6 +33,11 @@ mod native {
         }
 
         #[inline]
+        pub fn child_with_descendant(&self, descendant: Self) -> Option<Self> {
+            self.inner.child_with_descendant(descendant.inner).map(Into::into)
+        }
+
+        #[inline]
         pub fn child_count(&self) -> u32 {
             u32::try_from(self.inner.child_count()).unwrap()
         }
@@ -320,6 +325,11 @@ mod wasm {
             let field_name = field_name.as_ref();
             let field_name = unsafe { std::str::from_utf8_unchecked(field_name) };
             self.inner.child_for_field_name(field_name).map(Into::into)
+        }
+
+        #[inline]
+        pub fn child_with_descendant(&self, descendant: Self) -> Option<Self> {
+            self.inner.child_with_descendant(descendant.inner).map(Into::into)
         }
 
         #[inline]
