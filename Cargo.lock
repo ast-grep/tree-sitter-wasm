@@ -228,7 +228,7 @@ dependencies = [
 
 [[package]]
 name = "tree-sitter-facade-sg"
-version = "0.24.5"
+version = "0.25.3"
 dependencies = [
  "js-sys",
  "tree-sitter",
@@ -355,7 +355,7 @@ dependencies = [
 
 [[package]]
 name = "web-tree-sitter-sg"
-version = "0.24.5"
+version = "0.25.3"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
