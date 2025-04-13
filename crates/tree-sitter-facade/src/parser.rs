@@ -202,7 +202,7 @@ mod wasm {
 
         #[inline]
         pub fn language(&self) -> Option<Language> {
-            self.inner.get_language().map(Into::into)
+            self.inner.language().map(Into::into)
         }
 
         #[inline]
@@ -322,20 +322,10 @@ mod wasm {
             }
         }
 
-        #[inline]
-        pub fn set_timeout_micros(&mut self, timeout_micros: f64) {
-            self.inner.set_timeout_micros(timeout_micros)
-        }
-
         // #[inline]
         // pub fn stop_printing_dot_graphs(&mut self) {
         //     unimplemented!()
         // }
-
-        #[inline]
-        pub fn timeout_micros(&self) -> f64 {
-            self.inner.get_timeout_micros()
-        }
     }
 
     impl Drop for Parser {

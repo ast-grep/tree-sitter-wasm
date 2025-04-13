@@ -25,7 +25,7 @@ web = ["web-sys"]
 
 [dependencies]
 js-sys = "0.3"
-wasm-bindgen = { version = "0.2.83", features = ["strict-macro"] }
+wasm-bindgen = { version = "0.2", features = ["strict-macro"] }
 wasm-bindgen-futures = "0.4"
 
 [dependencies.web-sys]

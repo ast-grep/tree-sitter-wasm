@@ -101,7 +101,7 @@ mod wasm {
         }
 
         pub fn language(&self) -> Language {
-            self.inner.get_language().into()
+            self.inner.language().into()
         }
 
         pub fn root_node(&self) -> Node<'_> {

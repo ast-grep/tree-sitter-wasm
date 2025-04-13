@@ -8,22 +8,15 @@ importers:
 
   .:
     dependencies:
-      web-tree-sitter-sg:
-        specifier: file:./web-tree-sitter-sg/
-        version: file:web-tree-sitter-sg
+      web-tree-sitter:
+        specifier: 0.25.3
+        version: 0.25.3
 
 packages:
 
-  web-tree-sitter-sg@file:web-tree-sitter-sg:
-    resolution: {directory: web-tree-sitter-sg, type: directory}
-
-  web-tree-sitter@0.24.4:
-    resolution: {integrity: sha512-sETP1Sf9OTd4LusrKBNznNgTt3fWoWhJnAFaKPiGSeVKXJbZ72qoMpxddKMdVI5BgXv32OI7tkKQre5PmF9reA==}
+  web-tree-sitter@0.25.3:
+    resolution: {integrity: sha512-e0hdXG+nJ18Zd/QJFhSx0DNTSMz7miwUjKyJ/lglTnZo6ke08++BQzXkaeaqnGJFi9qq+nPJg2L8hYAjduToHQ==}
 
 snapshots:
 
-  web-tree-sitter-sg@file:web-tree-sitter-sg:
-    dependencies:
-      web-tree-sitter: 0.24.4
-
-  web-tree-sitter@0.24.4: {}
+  web-tree-sitter@0.25.3: {}

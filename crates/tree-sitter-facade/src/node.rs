@@ -329,7 +329,7 @@ mod wasm {
 
         #[inline]
         pub fn child_with_descendant(&self, descendant: Self) -> Option<Self> {
-            self.inner.child_with_descendant(descendant.inner).map(Into::into)
+            self.inner.child_with_descendant(&descendant.inner).map(Into::into)
         }
 
         #[inline]

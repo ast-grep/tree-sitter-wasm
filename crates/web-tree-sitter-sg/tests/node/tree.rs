@@ -64,7 +64,7 @@ async fn get_language() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let tree = crate::util::tree::make().await?.unwrap();
-        let _language = tree.get_language();
+        let _language = tree.language();
         Ok(())
     }
     assert!(inner().await.is_ok());

@@ -33,13 +33,6 @@ extern {
     static GLOBAL: Object;
 }
 
-#[cfg(feature = "node")]
-#[wasm_bindgen(module = "web-tree-sitter-sg")]
-extern {
-    #[wasm_bindgen(js_name = "init")]
-    fn initialize_tree_sitter() -> Promise;
-}
-
 thread_local! {
     // Ensure `web-tree-sitter` is only initialized once
     static TREE_SITTER_INITIALIZED: RefCell<bool> = RefCell::new(false);
@@ -56,7 +49,7 @@ impl TreeSitter {
             return Ok(());
         }
 
-        JsFuture::from(initialize_tree_sitter()).await.lift_error()?;
+        JsFuture::from(Parser::init()).await.lift_error()?;
 
         // Set `web-tree-sitter` to initialized
         TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
@@ -161,7 +154,7 @@ extern {
     fn delete(this: &LoggerParams, val: &JsString);
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(module="web-tree-sitter")]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Language;
@@ -768,6 +761,8 @@ extern {
 
     #[wasm_bindgen(method, getter, js_name = rootNode)]
     pub fn root_node(this: &Tree) -> SyntaxNode;
+    #[wasm_bindgen(method, getter)]
+    pub fn language(this: &Tree) -> Language;
 
     // Instance Methods
 
@@ -786,9 +781,6 @@ extern {
     // -> Range[]
     #[wasm_bindgen(method, js_name = getChangedRanges)]
     pub fn get_changed_ranges(this: &Tree, other: &Tree) -> Box<[JsValue]>;
-
-    #[wasm_bindgen(method, js_name = getLanguage)]
-    pub fn get_language(this: &Tree) -> Language;
 }
 
 impl Clone for Tree {
@@ -858,31 +850,32 @@ extern {
     pub fn reset(this: &TreeCursor, node: &SyntaxNode);
 }
 
-#[wasm_bindgen(module="web-tree-sitter-sg")]
+#[wasm_bindgen(module="web-tree-sitter")]
 extern {
     #[derive(Clone, Debug)]
     pub type Parser;
 
     // Static Methods
+    #[wasm_bindgen(static_method_of = Parser)]
+    pub fn init() -> Promise;
 
     // Constructor
 
     #[wasm_bindgen(catch, constructor)]
     fn __new() -> Result<Parser, ParserError>;
 
+    // Instance Properties
+
+    #[wasm_bindgen(method, getter)]
+    pub fn language(this: &Parser) -> Option<Language>;
+
     // Instance Methods
 
     #[wasm_bindgen(method)]
     pub fn delete(this: &Parser);
 
-    #[wasm_bindgen(method, js_name = getLanguage)]
-    pub fn get_language(this: &Parser) -> Option<Language>;
-
     #[wasm_bindgen(method, js_name = getLogger)]
     pub fn get_logger(this: &Parser) -> Option<Logger>;
-
-    #[wasm_bindgen(method, js_name = getTimeoutMicros)]
-    pub fn get_timeout_micros(this: &Parser) -> f64;
 
     #[wasm_bindgen(catch, method, js_name = parse)]
     pub fn parse_with_function(
@@ -908,9 +901,6 @@ extern {
 
     #[wasm_bindgen(method, js_name = setLogger)]
     pub fn set_logger(this: &Parser, logger: Option<&Logger>);
-
-    #[wasm_bindgen(method, js_name = setTimeoutMicros)]
-    pub fn set_timeout_micros(this: &Parser, timeout_micros: f64);
 }
 
 impl Parser {
