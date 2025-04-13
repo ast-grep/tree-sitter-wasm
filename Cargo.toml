@@ -8,7 +8,7 @@ resolver = "2"
 lto = true
 
 [workspace.package]
-version = "0.24.5"
+version = "0.25.3"
 authors = ["Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>"]
 edition = "2021"
 license = "MIT"
