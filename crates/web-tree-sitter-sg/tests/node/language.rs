@@ -24,11 +24,11 @@ async fn load_path() {
 }
 
 #[wasm_bindgen_test]
-async fn version() {
+async fn abi_version() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
         let language = crate::util::language::load().await?;
-        assert_eq!(14, language.version());
+        assert_eq!(14, language.abi_version());
         Ok(())
     }
     assert!(inner().await.is_ok());

@@ -169,8 +169,8 @@ extern {
 
     // Instance Properties
 
-    #[wasm_bindgen(method, getter)]
-    pub fn version(this: &Language) -> u32;
+    #[wasm_bindgen(method, getter, js_name = abiVersion)]
+    pub fn abi_version(this: &Language) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = fieldCount)]
     pub fn field_count(this: &Language) -> u16;

@@ -50,8 +50,8 @@ mod native {
         }
 
         #[inline]
-        pub fn version(&self) -> u32 {
-            u32::try_from(self.inner.version()).unwrap()
+        pub fn abi_version(&self) -> u32 {
+            u32::try_from(self.inner.abi_version()).unwrap()
         }
     }
 
@@ -148,8 +148,8 @@ mod wasm {
         }
 
         #[inline]
-        pub fn version(&self) -> u32 {
-            self.inner.version()
+        pub fn abi_version(&self) -> u32 {
+            self.inner.abi_version()
         }
     }
 

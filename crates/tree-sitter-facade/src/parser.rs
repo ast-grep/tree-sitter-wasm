@@ -10,7 +10,6 @@ mod native {
         range::Range,
         tree::Tree,
     };
-    use core::sync::atomic::AtomicUsize;
     use std::convert::TryFrom;
 
     pub struct Parser {
@@ -33,12 +32,6 @@ mod native {
         //     self.inner.take_wasm_store()
         // }
 
-        #[allow(clippy::missing_safety_doc)]
-        #[inline]
-        pub unsafe fn cancellation_flag(&self) -> Option<&AtomicUsize> {
-            self.inner.cancellation_flag()
-        }
-
         #[inline]
         pub fn language(&self) -> Option<Language> {
             self.inner.language().map(|l| (*l).clone()).map(Into::into)
@@ -56,17 +49,17 @@ mod native {
         }
 
         #[inline]
-        pub fn parse_utf16(
+        pub fn parse_utf16_le(
             &mut self,
             text: impl AsRef<[u16]>,
             old_tree: Option<&Tree>,
         ) -> Result<Option<Tree>, ParserError> {
             let old_tree = old_tree.map(|tree| &tree.inner);
-            Ok(self.inner.parse_utf16(text, old_tree).map(Into::into))
+            Ok(self.inner.parse_utf16_le(text, old_tree).map(Into::into))
         }
 
         #[inline]
-        pub fn parse_utf16_with<T>(
+        pub fn parse_utf16_le_with<T>(
             &mut self,
             mut callback: impl FnMut(u32, Point) -> T,
             old_tree: Option<&Tree>,
@@ -76,7 +69,7 @@ mod native {
         {
             let mut callback = |offset, inner| callback(u32::try_from(offset).unwrap(), Point { inner });
             let old_tree = old_tree.map(|tree| &tree.inner);
-            Ok(self.inner.parse_utf16_with(&mut callback, old_tree).map(Into::into))
+            Ok(self.inner.parse_utf16_le_with_options(&mut callback, old_tree, None).map(Into::into))
         }
 
         #[inline]
@@ -90,7 +83,7 @@ mod native {
         {
             let mut callback = |offset, inner| callback(u32::try_from(offset).unwrap(), Point { inner });
             let old_tree = old_tree.map(|tree| &tree.inner);
-            Ok(self.inner.parse_with(&mut callback, old_tree).map(Into::into))
+            Ok(self.inner.parse_with_options(&mut callback, old_tree, None).map(Into::into))
         }
 
         #[cfg(unix)]
@@ -102,12 +95,6 @@ mod native {
         #[inline]
         pub fn reset(&mut self) {
             self.inner.reset()
-        }
-
-        #[allow(clippy::missing_safety_doc)]
-        #[inline]
-        pub unsafe fn set_cancellation_flag(&mut self, flag: Option<&AtomicUsize>) {
-            self.inner.set_cancellation_flag(flag);
         }
 
         #[inline]
@@ -128,18 +115,8 @@ mod native {
         }
 
         #[inline]
-        pub fn set_timeout_micros(&mut self, timeout_micros: f64) {
-            self.inner.set_timeout_micros(timeout_micros as u64)
-        }
-
-        #[inline]
         pub fn stop_printing_dot_graphs(&mut self) {
             self.inner.stop_printing_dot_graphs()
-        }
-
-        #[inline]
-        pub fn timeout_micros(&self) -> f64 {
-            self.inner.timeout_micros() as f64
         }
     }
 
@@ -235,26 +212,26 @@ mod wasm {
                 .map_err(Into::into)
         }
 
-        // #[inline]
-        // pub fn parse_utf16(
-        //     &mut self,
-        //     text: impl AsRef<[u16]>,
-        //     old_tree: Option<&Tree>,
-        // ) -> Result<Option<Tree>, ParserError> {
-        //     unimplemented!()
-        // }
+        #[inline]
+        pub fn parse_utf16_le(
+            &mut self,
+            _text: impl AsRef<[u16]>,
+            _old_tree: Option<&Tree>,
+        ) -> Result<Option<Tree>, ParserError> {
+            unimplemented!()
+        }
 
-        // #[inline]
-        // pub fn parse_utf16_with<T>(
-        //     &mut self,
-        //     callback: impl FnMut(u32, Point) -> T + 'static,
-        //     old_tree: Option<&Tree>,
-        // ) -> Result<Option<Tree>, ParserError>
-        // where
-        //     T: AsRef<[u16]>,
-        // {
-        //     unimplemented!()
-        // }
+        #[inline]
+        pub fn parse_utf16_le_with<T>(
+            &mut self,
+            _callback: impl FnMut(u32, Point) -> T + 'static,
+            _old_tree: Option<&Tree>,
+        ) -> Result<Option<Tree>, ParserError>
+        where
+            T: AsRef<[u16]>,
+        {
+            unimplemented!()
+        }
 
         #[inline]
         pub fn parse_with<T>(
