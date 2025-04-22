@@ -8,7 +8,7 @@ use web_tree_sitter_sg::*;
 #[wasm_bindgen_test]
 async fn new() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let _parser = Parser::new()?;
         Ok(())
     }
@@ -18,7 +18,7 @@ async fn new() {
 #[wasm_bindgen_test]
 async fn delete() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         parser.delete();
         Ok(())
@@ -29,7 +29,7 @@ async fn delete() {
 #[wasm_bindgen_test]
 async fn parse_with_function() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
         parser.set_language(Some(&language))?;
@@ -49,7 +49,7 @@ async fn parse_with_function() {
 #[wasm_bindgen_test]
 async fn parse_with_string() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
         parser.set_language(Some(&language))?;
@@ -67,7 +67,7 @@ async fn parse_with_string() {
 #[wasm_bindgen_test]
 async fn reset() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         parser.reset();
         Ok(())
@@ -78,7 +78,7 @@ async fn reset() {
 #[wasm_bindgen_test]
 async fn set_get_language() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
 
@@ -96,7 +96,7 @@ async fn set_get_language() {
 #[wasm_bindgen_test]
 async fn set_get_logger() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
         parser.set_language(Some(&language))?;
