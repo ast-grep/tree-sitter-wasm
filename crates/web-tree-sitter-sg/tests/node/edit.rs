@@ -5,7 +5,7 @@ use web_tree_sitter_sg::*;
 #[wasm_bindgen_test]
 async fn new() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let _edit = <Edit as Default>::default();
         Ok(())
     }
@@ -15,7 +15,7 @@ async fn new() {
 #[wasm_bindgen_test]
 async fn start_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.start_index();
         Ok(())
@@ -26,7 +26,7 @@ async fn start_index() {
 #[wasm_bindgen_test]
 async fn old_end_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.old_end_index();
         Ok(())
@@ -37,7 +37,7 @@ async fn old_end_index() {
 #[wasm_bindgen_test]
 async fn new_end_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.new_end_index();
         Ok(())
@@ -48,7 +48,7 @@ async fn new_end_index() {
 #[wasm_bindgen_test]
 async fn start_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.new_end_index();
         Ok(())
@@ -59,7 +59,7 @@ async fn start_position() {
 #[wasm_bindgen_test]
 async fn old_end_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.new_end_index();
         Ok(())
@@ -70,7 +70,7 @@ async fn old_end_position() {
 #[wasm_bindgen_test]
 async fn new_end_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let edit = <Edit as Default>::default();
         let _ = edit.new_end_index();
         Ok(())

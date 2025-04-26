@@ -5,7 +5,7 @@ use web_tree_sitter_sg::*;
 #[wasm_bindgen_test]
 async fn name() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let (parser, _, query) = crate::util::language::query().await?;
         let tree = {
             let input = "function one() { two(); function three() {} }".into();
@@ -30,7 +30,7 @@ async fn name() {
 #[wasm_bindgen_test]
 async fn node() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let (parser, _, query) = crate::util::language::query().await?;
         let tree = {
             let input = "function one() { two(); function three() {} }".into();

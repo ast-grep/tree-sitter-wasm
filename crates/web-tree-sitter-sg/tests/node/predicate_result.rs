@@ -5,7 +5,7 @@ use web_tree_sitter_sg::*;
 #[wasm_bindgen_test]
 async fn operator() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
         parser.set_language(Some(&language))?;
@@ -34,7 +34,7 @@ async fn operator() {
 #[wasm_bindgen_test]
 async fn operands() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let parser = Parser::new()?;
         let language = crate::util::language::load().await?;
         parser.set_language(Some(&language))?;

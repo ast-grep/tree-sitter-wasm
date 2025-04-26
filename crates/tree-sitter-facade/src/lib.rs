@@ -29,6 +29,9 @@ pub use tree_cursor::*;
 
 use wasm_bindgen::prelude::*;
 
+#[cfg(target_arch = "wasm32")]
+pub use js_sys::Object;
+
 pub struct TreeSitter;
 
 impl TreeSitter {
@@ -38,7 +41,7 @@ impl TreeSitter {
     }
 
     #[cfg(target_arch = "wasm32")]
-    pub async fn init() -> Result<(), JsError> {
-        web_tree_sitter_sg::TreeSitter::init().await
+    pub async fn init(options: Option<Object>) -> Result<(), JsError> {
+        web_tree_sitter_sg::TreeSitter::init(options).await
     }
 }

@@ -5,7 +5,7 @@ use web_tree_sitter_sg::*;
 #[wasm_bindgen_test]
 async fn id() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.id();
         Ok(())
@@ -16,7 +16,7 @@ async fn id() {
 #[wasm_bindgen_test]
 async fn tree() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.tree();
         Ok(())
@@ -27,7 +27,7 @@ async fn tree() {
 #[wasm_bindgen_test]
 async fn type_() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.type_();
         Ok(())
@@ -38,7 +38,7 @@ async fn type_() {
 #[wasm_bindgen_test]
 async fn type_id() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.type_id();
         Ok(())
@@ -49,7 +49,7 @@ async fn type_id() {
 #[wasm_bindgen_test]
 async fn text() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.text();
         Ok(())
@@ -60,7 +60,7 @@ async fn text() {
 #[wasm_bindgen_test]
 async fn start_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.start_position();
         Ok(())
@@ -71,7 +71,7 @@ async fn start_position() {
 #[wasm_bindgen_test]
 async fn end_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.end_position();
         Ok(())
@@ -82,7 +82,7 @@ async fn end_position() {
 #[wasm_bindgen_test]
 async fn start_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.start_index();
         Ok(())
@@ -93,7 +93,7 @@ async fn start_index() {
 #[wasm_bindgen_test]
 async fn end_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.end_index();
         Ok(())
@@ -104,7 +104,7 @@ async fn end_index() {
 #[wasm_bindgen_test]
 async fn parent() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.parent();
         Ok(())
@@ -115,7 +115,7 @@ async fn parent() {
 #[wasm_bindgen_test]
 async fn children() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.children();
         Ok(())
@@ -126,7 +126,7 @@ async fn children() {
 #[wasm_bindgen_test]
 async fn named_children() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.named_children();
         Ok(())
@@ -137,7 +137,7 @@ async fn named_children() {
 #[wasm_bindgen_test]
 async fn child_count() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.child_count();
         Ok(())
@@ -148,7 +148,7 @@ async fn child_count() {
 #[wasm_bindgen_test]
 async fn named_child_count() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.named_child_count();
         Ok(())
@@ -159,7 +159,7 @@ async fn named_child_count() {
 #[wasm_bindgen_test]
 async fn first_child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.first_child();
         Ok(())
@@ -170,7 +170,7 @@ async fn first_child() {
 #[wasm_bindgen_test]
 async fn first_named_child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.first_named_child();
         Ok(())
@@ -181,7 +181,7 @@ async fn first_named_child() {
 #[wasm_bindgen_test]
 async fn last_child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.last_child();
         Ok(())
@@ -192,7 +192,7 @@ async fn last_child() {
 #[wasm_bindgen_test]
 async fn last_named_child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.last_named_child();
         Ok(())
@@ -203,7 +203,7 @@ async fn last_named_child() {
 #[wasm_bindgen_test]
 async fn next_sibling() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.next_sibling();
         Ok(())
@@ -214,7 +214,7 @@ async fn next_sibling() {
 #[wasm_bindgen_test]
 async fn next_named_sibling() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.next_named_sibling();
         Ok(())
@@ -225,7 +225,7 @@ async fn next_named_sibling() {
 #[wasm_bindgen_test]
 async fn previous_sibling() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.previous_sibling();
         Ok(())
@@ -236,7 +236,7 @@ async fn previous_sibling() {
 #[wasm_bindgen_test]
 async fn previous_named_sibling() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.previous_named_sibling();
         Ok(())
@@ -247,7 +247,7 @@ async fn previous_named_sibling() {
 #[wasm_bindgen_test]
 async fn has_changes() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.has_changes();
         Ok(())
@@ -258,7 +258,7 @@ async fn has_changes() {
 #[wasm_bindgen_test]
 async fn has_error() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.has_error();
         Ok(())
@@ -269,7 +269,7 @@ async fn has_error() {
 #[wasm_bindgen_test]
 async fn is_error() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.is_error();
         Ok(())
@@ -280,7 +280,7 @@ async fn is_error() {
 #[wasm_bindgen_test]
 async fn equals() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         assert!(node.equals(&node));
         Ok(())
@@ -291,7 +291,7 @@ async fn equals() {
 #[wasm_bindgen_test]
 async fn is_missing() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.is_missing();
         Ok(())
@@ -302,7 +302,7 @@ async fn is_missing() {
 #[wasm_bindgen_test]
 async fn is_named() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.is_named();
         Ok(())
@@ -313,7 +313,7 @@ async fn is_named() {
 #[wasm_bindgen_test]
 async fn to_string() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.to_string();
         Ok(())
@@ -324,7 +324,7 @@ async fn to_string() {
 #[wasm_bindgen_test]
 async fn child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let field_id = Default::default();
         let _ = node.child(field_id);
@@ -336,7 +336,7 @@ async fn child() {
 #[wasm_bindgen_test]
 async fn named_child() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let field_id = Default::default();
         let _ = node.named_child(field_id);
@@ -348,7 +348,7 @@ async fn named_child() {
 #[wasm_bindgen_test]
 async fn child_for_field_id() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let field_id = Default::default();
         let _ = node.child_for_field_id(field_id);
@@ -360,7 +360,7 @@ async fn child_for_field_id() {
 #[wasm_bindgen_test]
 async fn child_for_field_name() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let field_name = Default::default();
         let _ = node.child_for_field_name(field_name);
@@ -372,7 +372,7 @@ async fn child_for_field_name() {
 #[wasm_bindgen_test]
 async fn child_with_descendant() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let descendant = crate::util::syntax_node::make().await?.unwrap();
         let _ = node.child_with_descendant(&descendant);
@@ -384,7 +384,7 @@ async fn child_with_descendant() {
 #[wasm_bindgen_test]
 async fn descendant_for_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let index = Default::default();
         let _ = node.descendant_for_index(index);
@@ -396,7 +396,7 @@ async fn descendant_for_index() {
 #[wasm_bindgen_test]
 async fn descendant_for_index_range() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let start_index = Default::default();
         let end_index = Default::default();
@@ -409,7 +409,7 @@ async fn descendant_for_index_range() {
 #[wasm_bindgen_test]
 async fn descendant_of_type_string() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let type_ = Default::default();
         let start_position = Default::default();
@@ -423,7 +423,7 @@ async fn descendant_of_type_string() {
 #[wasm_bindgen_test]
 async fn descendant_of_type_array() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let type_ = Default::default();
         let start_position = Default::default();
@@ -437,7 +437,7 @@ async fn descendant_of_type_array() {
 #[wasm_bindgen_test]
 async fn named_descendant_for_index() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let index = Default::default();
         let _ = node.named_descendant_for_index(index);
@@ -449,7 +449,7 @@ async fn named_descendant_for_index() {
 #[wasm_bindgen_test]
 async fn named_descendant_for_index_range() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let start_index = Default::default();
         let end_index = Default::default();
@@ -462,7 +462,7 @@ async fn named_descendant_for_index_range() {
 #[wasm_bindgen_test]
 async fn descendant_for_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let position = Default::default();
         let _ = node.descendant_for_position(&position);
@@ -474,7 +474,7 @@ async fn descendant_for_position() {
 #[wasm_bindgen_test]
 async fn descendant_for_position_range() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let start_position = Default::default();
         let end_position = Default::default();
@@ -487,7 +487,7 @@ async fn descendant_for_position_range() {
 #[wasm_bindgen_test]
 async fn named_descendant_for_position() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let position = Default::default();
         let _node = node.named_descendant_for_position(&position);
@@ -499,7 +499,7 @@ async fn named_descendant_for_position() {
 #[wasm_bindgen_test]
 async fn named_descendant_for_position_range() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let start_position = Default::default();
         let end_position = Default::default();
@@ -512,7 +512,7 @@ async fn named_descendant_for_position_range() {
 #[wasm_bindgen_test]
 async fn walk() {
     async fn inner() -> Result<(), JsValue> {
-        TreeSitter::init().await?;
+        TreeSitter::init(None).await?;
         let node = crate::util::syntax_node::make().await?.unwrap();
         let _cursor = node.walk();
         Ok(())

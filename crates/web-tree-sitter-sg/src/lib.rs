@@ -41,7 +41,7 @@ thread_local! {
 pub struct TreeSitter;
 
 impl TreeSitter {
-    pub async fn init() -> Result<(), JsError> {
+    pub async fn init(options: Option<Object>) -> Result<(), JsError> {
         #![allow(non_snake_case)]
 
         // Exit early if `web-tree-sitter` is already initialized
@@ -49,7 +49,7 @@ impl TreeSitter {
             return Ok(());
         }
 
-        JsFuture::from(Parser::init()).await.lift_error()?;
+        JsFuture::from(Parser::init(options)).await.lift_error()?;
 
         // Set `web-tree-sitter` to initialized
         TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
@@ -857,7 +857,7 @@ extern {
 
     // Static Methods
     #[wasm_bindgen(static_method_of = Parser)]
-    pub fn init() -> Promise;
+    pub fn init(options: Option<Object>) -> Promise;
 
     // Constructor
 
