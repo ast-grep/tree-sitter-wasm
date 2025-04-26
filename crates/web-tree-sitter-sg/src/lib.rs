@@ -41,7 +41,7 @@ thread_local! {
 pub struct TreeSitter;
 
 impl TreeSitter {
-    pub async fn init(options: Option<&wasm_bindgen::JsValue>) -> Result<(), JsError> {
+    pub async fn init(options: Option<Object>) -> Result<(), JsError> {
         #![allow(non_snake_case)]
 
         // Exit early if `web-tree-sitter` is already initialized
@@ -49,8 +49,7 @@ impl TreeSitter {
             return Ok(());
         }
 
-        let js_options = options.cloned().unwrap_or_else(|| wasm_bindgen::JsValue::UNDEFINED);
-        JsFuture::from(Parser::init(&js_options)).await.lift_error()?;
+        JsFuture::from(Parser::init(options)).await.lift_error()?;
 
         // Set `web-tree-sitter` to initialized
         TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
@@ -490,6 +489,7 @@ impl QueryMatch {
 #[wasm_bindgen]
 extern {
     #[derive(Clone, Debug)]
+    #[wasm_bindgen(extends = Object)]
     pub type Range;
 
     // Instance Properties
@@ -857,7 +857,7 @@ extern {
 
     // Static Methods
     #[wasm_bindgen(static_method_of = Parser)]
-    pub fn init(options: &wasm_bindgen::JsValue) -> Promise;
+    pub fn init(options: Option<Object>) -> Promise;
 
     // Constructor
 
