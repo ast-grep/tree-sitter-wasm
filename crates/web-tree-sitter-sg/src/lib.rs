@@ -897,7 +897,7 @@ extern {
     pub fn reset(this: &Parser);
 
     #[wasm_bindgen(catch, method, js_name = setLanguage)]
-    pub fn set_language(this: &Parser, language: Option<&Language>) -> Result<(), LanguageError>;
+    pub fn set_language(this: &Parser, language: &Language) -> Result<(), LanguageError>;
 
     #[wasm_bindgen(method, js_name = setLogger)]
     pub fn set_logger(this: &Parser, logger: Option<&Logger>);
