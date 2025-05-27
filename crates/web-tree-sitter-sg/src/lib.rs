@@ -4,7 +4,7 @@
 
 use core::cell::RefCell;
 use js_sys::{Array, Error, Function, JsString, Object, Promise, Reflect, Uint8Array};
-use wasm_bindgen::{prelude::*, JsCast};
+use wasm_bindgen::{JsCast, prelude::*};
 use wasm_bindgen_futures::JsFuture;
 
 trait JsValueExt {
@@ -41,7 +41,7 @@ thread_local! {
 pub struct TreeSitter;
 
 impl TreeSitter {
-    pub async fn init() -> Result<(), JsError> {
+    pub async fn init(locate_file: Option<Function>) -> Result<(), JsError> {
         #![allow(non_snake_case)]
 
         // Exit early if `web-tree-sitter` is already initialized
@@ -49,18 +49,18 @@ impl TreeSitter {
             return Ok(());
         }
 
-        JsFuture::from(Parser::init()).await.lift_error()?;
+        if let Some(locate_file) = locate_file {
+            let options = Object::new();
+            Reflect::set(&options, &"locateFile".into(), &locate_file.into()).unwrap();
+            JsFuture::from(Parser::init(Some(&options))).await.lift_error()?;
+        } else {
+            JsFuture::from(Parser::init(None)).await.lift_error()?;
+        }
 
         // Set `web-tree-sitter` to initialized
         TREE_SITTER_INITIALIZED.with(|cell| cell.replace(true));
 
         Ok(())
-    }
-
-    fn init_guard() {
-        if !TREE_SITTER_INITIALIZED.with(|cell| *cell.borrow()) {
-            wasm_bindgen::throw_str("TreeSitter::init must be called to initialize the library");
-        }
     }
 }
 
@@ -154,7 +154,7 @@ extern {
     fn delete(this: &LoggerParams, val: &JsString);
 }
 
-#[wasm_bindgen(module="web-tree-sitter")]
+#[wasm_bindgen(module = "web-tree-sitter")]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Language;
@@ -204,7 +204,6 @@ extern {
 
 impl Language {
     pub async fn load_bytes(bytes: &Uint8Array) -> Result<Language, LanguageError> {
-        TreeSitter::init_guard();
         JsFuture::from(Language::__load_bytes(bytes))
             .await
             .map(JsCast::unchecked_into)
@@ -212,7 +211,6 @@ impl Language {
     }
 
     pub async fn load_path(path: &str) -> Result<Language, LanguageError> {
-        TreeSitter::init_guard();
         JsFuture::from(Language::__load_path(path))
             .await
             .map(JsCast::unchecked_into)
@@ -292,8 +290,7 @@ impl Default for Point {
     }
 }
 
-impl Eq for Point {
-}
+impl Eq for Point {}
 
 impl std::hash::Hash for Point {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -538,8 +535,7 @@ impl Default for Range {
     }
 }
 
-impl Eq for Range {
-}
+impl Eq for Range {}
 
 impl std::hash::Hash for Range {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -743,8 +739,7 @@ impl PartialEq<SyntaxNode> for SyntaxNode {
     }
 }
 
-impl Eq for SyntaxNode {
-}
+impl Eq for SyntaxNode {}
 
 impl std::hash::Hash for SyntaxNode {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -850,14 +845,14 @@ extern {
     pub fn reset(this: &TreeCursor, node: &SyntaxNode);
 }
 
-#[wasm_bindgen(module="web-tree-sitter")]
+#[wasm_bindgen(module = "web-tree-sitter")]
 extern {
     #[derive(Clone, Debug)]
     pub type Parser;
 
     // Static Methods
     #[wasm_bindgen(static_method_of = Parser)]
-    pub fn init() -> Promise;
+    pub fn init(options: Option<&Object>) -> Promise;
 
     // Constructor
 
@@ -897,7 +892,7 @@ extern {
     pub fn reset(this: &Parser);
 
     #[wasm_bindgen(catch, method, js_name = setLanguage)]
-    pub fn set_language(this: &Parser, language: Option<&Language>) -> Result<(), LanguageError>;
+    pub fn set_language(this: &Parser, language: &Language) -> Result<(), LanguageError>;
 
     #[wasm_bindgen(method, js_name = setLogger)]
     pub fn set_logger(this: &Parser, logger: Option<&Logger>);
@@ -905,7 +900,6 @@ extern {
 
 impl Parser {
     pub fn new() -> Result<Parser, ParserError> {
-        TreeSitter::init_guard();
         let result = Parser::__new()?;
         Ok(result)
     }
