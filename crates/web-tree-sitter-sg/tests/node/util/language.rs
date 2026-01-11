@@ -32,5 +32,5 @@ pub(crate) fn url(language: &str) -> Result<String, Box<dyn Error>> {
         Ok(path) => Ok::<_, Box<dyn Error>>(path),
         Err(err) => Err(format!("failed to convert path to string `{:?}`", err).into()),
     }?;
-    Ok(super::require.resolve(&path, None))
+    Ok(super::require.with(|r| r.resolve(&path, None)))
 }

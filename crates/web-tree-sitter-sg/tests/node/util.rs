@@ -8,6 +8,7 @@ use wasm_bindgen::prelude::*;
 extern {
     pub type Require;
 
+    #[wasm_bindgen(thread_local_v2)]
     pub static require: Require;
 
     #[wasm_bindgen(method)]
