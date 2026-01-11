@@ -1,5 +1,24 @@
 {
-  "dependencies": {
+  "name": "web-tree-sitter-sg",
+  "version": "0.25.11",
+  "description": "Raw bindings to the web-tree-sitter API",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "wasm-pack build --target web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ast-grep/ast-grep"
+  },
+  "keywords": [
+    "tree-sitter",
+    "wasm",
+    "parser"
+  ],
+  "author": "Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>",
+  "license": "MIT",
+  "devDependencies": {
     "web-tree-sitter": "0.25.10"
   }
 }
