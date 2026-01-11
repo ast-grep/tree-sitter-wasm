@@ -1,20 +1,26 @@
-# rust-tree-sitter-wasm
+<div align="center">
+  <h1><code>web-tree-sitter-sg</code></h1>
+  <p>
+    <strong>Raw bindings to the web-tree-sitter API for projects using wasm-bindgen</strong>
+  </p>
+  <p style="margin-bottom: 0.5ex;">
+    <a href="https://ast-grep.github.io/web-tree-sitter-sg/web_tree_sitter_sys"><img
+        src="https://img.shields.io/badge/docs-latest-blueviolet?logo=Read-the-docs&logoColor=white"
+        /></a>
+    <a href="https://github.com/ast-grep/web-tree-sitter-sg/actions"><img
+        src="https://github.com/ast-grep/web-tree-sitter-sg/workflows/main/badge.svg"
+        /></a>
+    <a href="https://codecov.io/gh/ast-grep/web-tree-sitter-sg"><img
+        src="https://codecov.io/gh/ast-grep/web-tree-sitter-sg/branches/main/graph/badge.svg"
+        /></a>
+  </p>
+</div>
 
-This package provides binding to make tree-sitter work with Rust in browser.
+## Overview
 
-## Architecture
+This package provides Rust bindings to make tree-sitter work with WebAssembly in the browser using wasm-bindgen.
 
-```mermaid
-graph TD;
-web_ts_npm("web-tree-sitter(npm)") -->|wasm-bindgen| web_ts_sg_crate("web-tree-sitter-sg(Rust crate)")
-web_ts_sg_crate -->|target:wasm| ts_facade_crate("tree-sitter-facade(Rust crate)")
-ts_crate("tree-sitter(Rust crate)") -->|target:native| ts_facade_crate
+## Features
 
-classDef crate fill:#dea584,stroke:#333;
-classDef npm fill:#f1e05a,stroke:#333;
-
-class web_ts_npm npm;
-class web_ts_sg_crate crate;
-class ts_facade_crate crate;
-class ts_crate crate;
-```
+- `node` (default): Node.js-compatible bindings
+- `web`: Browser-compatible bindings with web-sys integration
