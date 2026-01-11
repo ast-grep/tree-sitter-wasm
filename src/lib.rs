@@ -26,13 +26,6 @@ impl<T> JsValueExt for Result<T, JsValue> {
     }
 }
 
-#[cfg(feature = "node")]
-#[wasm_bindgen]
-extern {
-    #[wasm_bindgen(js_name = "global")]
-    static GLOBAL: Object;
-}
-
 thread_local! {
     // Ensure `web-tree-sitter` is only initialized once
     static TREE_SITTER_INITIALIZED: RefCell<bool> = RefCell::new(false);
