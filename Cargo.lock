@@ -333,7 +333,7 @@ dependencies = [
 
 [[package]]
 name = "web-tree-sitter-sg"
-version = "0.25.3"
+version = "0.25.10"
 dependencies = [
  "js-sys",
  "wasm-bindgen",
