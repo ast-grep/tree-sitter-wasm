@@ -4,7 +4,7 @@
 
 use core::cell::RefCell;
 use js_sys::{Array, Error, Function, JsString, Object, Promise, Reflect, Uint8Array};
-use wasm_bindgen::{prelude::*, JsCast};
+use wasm_bindgen::{JsCast, prelude::*};
 use wasm_bindgen_futures::JsFuture;
 
 trait JsValueExt {
@@ -147,7 +147,7 @@ extern {
     fn delete(this: &LoggerParams, val: &JsString);
 }
 
-#[wasm_bindgen(module="web-tree-sitter")]
+#[wasm_bindgen(module = "web-tree-sitter")]
 extern {
     #[derive(Clone, Debug, PartialEq)]
     pub type Language;
@@ -286,8 +286,7 @@ impl Default for Point {
     }
 }
 
-impl Eq for Point {
-}
+impl Eq for Point {}
 
 impl std::hash::Hash for Point {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -535,8 +534,7 @@ impl Default for Range {
     }
 }
 
-impl Eq for Range {
-}
+impl Eq for Range {}
 
 impl std::hash::Hash for Range {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -742,8 +740,7 @@ impl PartialEq<SyntaxNode> for SyntaxNode {
     }
 }
 
-impl Eq for SyntaxNode {
-}
+impl Eq for SyntaxNode {}
 
 impl std::hash::Hash for SyntaxNode {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -849,7 +846,7 @@ extern {
     pub fn reset(this: &TreeCursor, node: &SyntaxNode);
 }
 
-#[wasm_bindgen(module="web-tree-sitter")]
+#[wasm_bindgen(module = "web-tree-sitter")]
 extern {
     #[derive(Clone, Debug)]
     pub type Parser;
