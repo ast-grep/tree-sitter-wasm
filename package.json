@@ -1,11 +1,12 @@
 {
   "name": "web-tree-sitter-sg",
-  "version": "0.25.11",
+  "version": "0.26.11",
   "description": "Raw bindings to the web-tree-sitter API",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "wasm-pack build --target web"
+    "build": "wasm-pack build --target web",
+    "test": "NODE_PATH=./node_modules wasm-pack test --node"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,6 @@
   "author": "Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "web-tree-sitter": "0.25.10"
+    "web-tree-sitter": "0.26.11"
   }
 }

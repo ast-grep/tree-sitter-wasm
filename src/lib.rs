@@ -653,6 +653,8 @@ extern {
 
     #[wasm_bindgen(method, getter, js_name = isError)]
     pub fn is_error(this: &SyntaxNode) -> bool;
+    #[wasm_bindgen(method, getter, js_name = isExtra)]
+    pub fn is_extra(this: &SyntaxNode) -> bool;
 
     // Instance Methods
 
