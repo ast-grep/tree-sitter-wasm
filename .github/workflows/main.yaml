@@ -58,8 +58,12 @@ jobs:
         with:
           profile: minimal
           components: clippy
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.8.0
       - name: Install node dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Run cargo clippy
         uses: actions-rs/clippy-check@v1
         with:
@@ -144,8 +148,12 @@ jobs:
           args: --root ${{ runner.tool_cache }}/wasm-bindgen-cli --force wasm-bindgen-cli --version ${{ env.WASM_BINDGEN_CLI_VERSION }}
       - name: Configure $PATH for wasm-bindgen-cli
         run: echo "${{ runner.tool_cache }}/wasm-bindgen-cli/bin" >> $GITHUB_PATH
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.8.0
       - name: Install node dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Run cargo xtask test
         uses: actions-rs/cargo@v1
         with:
