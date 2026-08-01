@@ -286,7 +286,8 @@ impl Default for Point {
     }
 }
 
-impl Eq for Point {}
+impl Eq for Point {
+}
 
 impl std::hash::Hash for Point {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -532,7 +533,8 @@ impl Default for Range {
     }
 }
 
-impl Eq for Range {}
+impl Eq for Range {
+}
 
 impl std::hash::Hash for Range {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
@@ -736,7 +738,8 @@ impl PartialEq<SyntaxNode> for SyntaxNode {
     }
 }
 
-impl Eq for SyntaxNode {}
+impl Eq for SyntaxNode {
+}
 
 impl std::hash::Hash for SyntaxNode {
     fn hash<H: std::hash::Hasher>(&self, state: &mut H) {
