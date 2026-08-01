@@ -28,7 +28,7 @@ impl<T> JsValueExt for Result<T, JsValue> {
 
 thread_local! {
     // Ensure `web-tree-sitter` is only initialized once
-    static TREE_SITTER_INITIALIZED: RefCell<bool> = RefCell::new(false);
+    static TREE_SITTER_INITIALIZED: RefCell<bool> = const { RefCell::new(false) };
 }
 
 pub struct TreeSitter;
@@ -313,9 +313,7 @@ impl PartialEq for Point {
 
 impl PartialOrd for Point {
     fn partial_cmp(&self, that: &Point) -> Option<std::cmp::Ordering> {
-        let this = self.spread();
-        let that = that.spread();
-        this.partial_cmp(&that)
+        Some(self.cmp(that))
     }
 }
 
@@ -561,9 +559,7 @@ impl PartialEq<Range> for Range {
 
 impl PartialOrd<Range> for Range {
     fn partial_cmp(&self, that: &Self) -> Option<std::cmp::Ordering> {
-        let this = self.spread();
-        let that = that.spread();
-        this.partial_cmp(&that)
+        Some(self.cmp(that))
     }
 }
 
