@@ -33,7 +33,7 @@ jobs:
         cargo search cargo-audit | grep '^cargo-audit' | awk '{gsub(/"/,"",$3); print $3}' > .github/caching/cargo-audit.lock
     - name: Cache cargo-audit/bin
       id: cache-cargo-audit
-      uses: actions/cache@v1
+      uses: actions/cache@v4
       with:
         path: ${{ runner.tool_cache }}/cargo-audit/bin
         key: cargo-audit-bin-${{ hashFiles('.github/caching/cargo-audit.lock') }}
@@ -132,7 +132,7 @@ jobs:
       - run: rustup target add wasm32-unknown-unknown
       - name: Cache wasm-bindgen-cli/bin
         id: cache-wasm-bindgen-cli
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: ${{ runner.tool_cache }}/wasm-bindgen-cli/bin
           key: wasm-bindgen-cli-bin-${{ env.WASM_BINDGEN_CLI_VERSION }}
@@ -151,4 +151,3 @@ jobs:
         with:
           command: xtask
           args: test -- --target wasm32-unknown-unknown
-
