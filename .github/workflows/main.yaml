@@ -126,7 +126,7 @@ jobs:
     needs: [skip-commit]
     runs-on: ubuntu-latest
     env:
-      WASM_BINDGEN_CLI_VERSION: "0.2.83"
+      WASM_BINDGEN_CLI_VERSION: "0.2.106"
     steps:
       - uses: actions/checkout@v2
       - name: Install Rust toolchain
@@ -154,8 +154,8 @@ jobs:
           version: 10.8.0
       - name: Install node dependencies
         run: pnpm install --frozen-lockfile
-      - name: Run cargo xtask test
-        uses: actions-rs/cargo@v1
-        with:
-          command: xtask
-          args: test -- --target wasm32-unknown-unknown
+      - name: Run cargo test
+        run: cargo test --target wasm32-unknown-unknown
+        env:
+          NODE_PATH: ${{ github.workspace }}/node_modules
+          WASM_BINDGEN_TEST_ONLY_NODE: "1"
