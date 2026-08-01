@@ -190,9 +190,6 @@ extern {
 
     #[wasm_bindgen(method, js_name = nodeTypeIsVisible)]
     pub fn node_kind_is_visible(this: &Language, kind_id: u16) -> bool;
-
-    #[wasm_bindgen(catch, method)]
-    pub fn query(this: &Language, source: &JsString) -> Result<Query, QueryError>;
 }
 
 impl Language {
@@ -210,6 +207,10 @@ impl Language {
             .await
             .map(JsCast::unchecked_into)
             .map_err(JsCast::unchecked_into)
+    }
+
+    pub fn query(&self, source: &JsString) -> Result<Query, QueryError> {
+        Query::new(self, source)
     }
 }
 
@@ -384,10 +385,13 @@ impl Default for PredicateResult {
     }
 }
 
-#[wasm_bindgen]
+#[wasm_bindgen(module = "web-tree-sitter")]
 extern {
     #[derive(Clone, Debug)]
     pub type Query;
+
+    #[wasm_bindgen(constructor, catch)]
+    pub fn new(language: &Language, source: &JsString) -> Result<Query, QueryError>;
 
     // Instance Properties
 
@@ -462,7 +466,7 @@ extern {
 
     // Instance Properties
 
-    #[wasm_bindgen(method, getter)]
+    #[wasm_bindgen(method, getter, js_name = patternIndex)]
     pub fn pattern(this: &QueryMatch) -> u32;
 
     // -> QueryCapture[]
@@ -473,7 +477,7 @@ extern {
 impl QueryMatch {
     pub fn new(pattern: u32, captures: &Array) -> Self {
         let obj = Object::new();
-        Reflect::set(&obj, &"pattern".into(), &pattern.into()).unwrap();
+        Reflect::set(&obj, &"patternIndex".into(), &pattern.into()).unwrap();
         Reflect::set(&obj, &"captures".into(), &captures.into()).unwrap();
         JsCast::unchecked_into(obj)
     }

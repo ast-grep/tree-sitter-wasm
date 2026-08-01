@@ -278,6 +278,28 @@ async fn is_error() {
 }
 
 #[wasm_bindgen_test]
+async fn is_extra() {
+    async fn inner() -> Result<(), JsValue> {
+        TreeSitter::init().await?;
+        let parser = Parser::new()?;
+        let language = crate::util::language::load().await?;
+        parser.set_language(Some(&language))?;
+        let input = "// comment".into();
+        let tree = parser
+            .parse_with_string(&input, None, None)?
+            .expect("parser should return a tree");
+        let comment = tree
+            .root_node()
+            .first_child()
+            .expect("parsed tree should contain the comment");
+
+        assert!(comment.is_extra());
+        Ok(())
+    }
+    assert!(inner().await.is_ok());
+}
+
+#[wasm_bindgen_test]
 async fn equals() {
     async fn inner() -> Result<(), JsValue> {
         TreeSitter::init().await?;
