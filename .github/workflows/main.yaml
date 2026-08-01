@@ -85,11 +85,8 @@ jobs:
           toolchain: ${{ env.RUST_TOOLCHAIN }}
           profile: minimal
           override: true
-      - name: Run cargo xtask doc
-        uses: actions-rs/cargo@v1
-        with:
-          command: xtask
-          args: doc -- --no-deps --package web-tree-sitter-sys
+      - name: Run cargo doc
+        run: cargo doc --no-deps --package web-tree-sitter-sg
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
