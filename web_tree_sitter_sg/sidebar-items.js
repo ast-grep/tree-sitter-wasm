@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"struct":["Edit","Language","LanguageError","LoggerParams","ParseOptions","Parser","ParserError","Point","PredicateOperand","PredicateResult","Query","QueryCapture","QueryError","QueryMatch","Range","SyntaxNode","Tree","TreeCursor","TreeSitter"],"type":["Input","InputClosureType","Logger","LoggerClosureType"]};
