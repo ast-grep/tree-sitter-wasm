@@ -9,14 +9,14 @@ importers:
   .:
     devDependencies:
       web-tree-sitter:
-        specifier: 0.26.11
-        version: 0.26.11
+        specifier: 0.26.13
+        version: 0.26.13
 
 packages:
 
-  web-tree-sitter@0.26.11:
-    resolution: {integrity: sha512-Q5Dm3YTIXSXuH6FxX6RuzX2Qwpc4DPGiYMU87Wg5Z8OIStiQFiUex4zMDc0vBTw78EphaYJacncJghCHzbZptg==}
+  web-tree-sitter@0.26.13:
+    resolution: {integrity: sha512-5bUZ7vbQ1kcondet96wzP974+JfCZDeQ7bTpacICm2nnvHpa5cO0ByRsoMcAhUP+743vpkb4m0BFlVSm+Ye9VA==}
 
 snapshots:
 
-  web-tree-sitter@0.26.11: {}
+  web-tree-sitter@0.26.13: {}
