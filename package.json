@@ -20,6 +20,6 @@
   "author": "Herrington Darkholme <2883231+HerringtonDarkholme@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "web-tree-sitter": "0.26.11"
+    "web-tree-sitter": "0.27.1"
   }
 }
